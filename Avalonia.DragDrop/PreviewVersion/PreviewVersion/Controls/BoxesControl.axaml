@@ -1,0 +1,37 @@
+<UserControl 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" 
+    d:DesignWidth="800" 
+    d:DesignHeight="450"
+    x:Class="PreviewVersion.Controls.BoxesControl"
+    xmlns:controls="clr-namespace:PreviewVersion.Controls;assembly=PreviewVersion">
+    <Grid 
+        x:Name="parentGrid"
+        Background="Transparent">
+        <ScrollViewer
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Disabled" >
+            <ItemsControl
+                x:Name="boxItemsControl"
+                Items="{Binding Boxes}"
+                DragDrop.AllowDrop="True">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Background="Transparent" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <controls:BoxControl DataContext="{Binding}" Margin="6" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        </Grid>
+
+</UserControl>
