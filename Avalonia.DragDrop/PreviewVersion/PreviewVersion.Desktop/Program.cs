@@ -16,8 +16,7 @@ namespace PreviewVersion.Desktop
         public static AppBuilder BuildAvaloniaApp()
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
-                .LogToTrace()
-                .With(new Win32PlatformOptions { EnableWmPointerEvents = false });
+                .LogToTrace();
                  
     }
 }
