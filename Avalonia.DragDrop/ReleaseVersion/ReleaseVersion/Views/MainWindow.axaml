@@ -1,0 +1,36 @@
+<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:ReleaseVersion.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:ReleaseVersion.Views"
+    mc:Ignorable="d"
+    d:DesignWidth="800"
+    d:DesignHeight="450"
+    x:Class="ReleaseVersion.Views.MainWindow"
+    Icon="/Assets/avalonia-logo.ico"
+    Title="ReleaseVersion"
+	TransparencyLevelHint="AcrylicBlur"
+    Background="Transparent"
+    ExtendClientAreaToDecorationsHint="True"
+    xmlns:controls="clr-namespace:ReleaseVersion.Controls;assembly=ReleaseVersion">
+	<Panel x:Name="mainPanel">
+		<ExperimentalAcrylicBorder IsHitTestVisible="False">
+			<ExperimentalAcrylicBorder.Material>
+				<ExperimentalAcrylicMaterial
+                    BackgroundSource="Digger"
+                    TintColor="Black"
+                    TintOpacity="1"
+                    MaterialOpacity="0.65" />
+			</ExperimentalAcrylicBorder.Material>
+		</ExperimentalAcrylicBorder>
+		<Grid RowDefinitions="30, *">
+			<Border Height="30" Background="Transparent" IsHitTestVisible="False" VerticalAlignment="Top" />
+            <TextBlock Height="30" Background="Transparent" IsHitTestVisible="False" VerticalAlignment="Top" Margin="6" Text="Release Version" />
+			<Panel x:Name="ROOTPANEL" Grid.RowSpan="2"
+                Margin="1,31,1,1"
+                Background="Blue"/>
+		</Grid>
+	</Panel>
+</Window>

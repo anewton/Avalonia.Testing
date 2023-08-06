@@ -1,0 +1,12 @@
+<Application 
+	xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ReleaseVersion"
+	xmlns:controls="clr-namespace:ReleaseVersion.Controls;assembly=ReleaseVersion"
+    x:Class="ReleaseVersion.App"
+    RequestedThemeVariant="Dark">
+
+    <Application.Styles>
+        <FluentTheme />
+    </Application.Styles>
+</Application>

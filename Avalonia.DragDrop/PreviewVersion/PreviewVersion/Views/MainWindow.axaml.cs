@@ -1,20 +1,25 @@
 using Avalonia.Controls;
-using Avalonia.Controls.Primitives;
+using Avalonia.Markup.Xaml;
+using System;
 
-namespace PreviewVersion.Views
+namespace PreviewVersion.Views;
+
+public partial class MainWindow : Window
 {
-    public partial class MainWindow : Window
+    public MainWindow()
     {
-        public Popup DragDropIndicatorPopup { get; private set; }
-
-        public MainWindow()
-        {
-            InitializeComponent();
-
-            if(!Design.IsDesignMode)
-            {
-                DragDropIndicatorPopup = this.FindControl<Popup>("dragDropIndicatorPopup");
-            }
-        }
+        InitializeComponent();
     }
+
+    private void InitializeComponent()
+    {
+        AvaloniaXamlLoader.Load(this);
+
+        var rootPanel = this.FindControl<Panel>("ROOTPANEL");
+        var page = AvaloniaXamlLoader.Load(new Uri($"avares://PreviewVersion/Views/MainView.axaml", UriKind.RelativeOrAbsolute)) as IControl;
+        rootPanel.Children.Clear();
+        rootPanel.Children.Add(page);
+    }
+
+    
 }

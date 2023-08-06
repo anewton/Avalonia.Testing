@@ -1,0 +1,31 @@
+<dragControls:DragEnabledPanel
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="120" d:DesignHeight="120"
+	x:Class="ReleaseVersion.DragControls.CircleDragControl"
+	xmlns:dragControls="clr-namespace:ReleaseVersion.DragControls;assembly=ReleaseVersion">
+	<Grid
+        Background="Transparent"
+		HorizontalAlignment="Stretch"
+		VerticalAlignment="Stretch"
+		Margin="0"
+		Width="120"
+		Height="120">
+		<Ellipse
+			 Stroke="White"
+			 StrokeThickness="1"
+			Width="120"
+			Height="120"
+			Fill="Black" />
+
+		<TextBlock
+			TextWrapping="Wrap"
+			HorizontalAlignment="Center"
+			VerticalAlignment="Center"
+			Text="{Binding Name, FallbackValue=TEST}"
+			Foreground="White" />
+
+	</Grid>
+</dragControls:DragEnabledPanel>

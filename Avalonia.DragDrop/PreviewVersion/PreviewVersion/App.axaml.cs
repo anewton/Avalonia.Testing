@@ -4,36 +4,35 @@ using Avalonia.Markup.Xaml;
 using PreviewVersion.ViewModels;
 using PreviewVersion.Views;
 
-namespace PreviewVersion
+namespace PreviewVersion;
+
+public partial class App : Application
 {
-   public partial class App : Application
+    public static MainWindow MainWin { get; private set; }
+
+    public override void Initialize()
     {
-        public static MainWindow MainWin { get; private set; }
+        AvaloniaXamlLoader.Load(this);
+    }
 
-        public override void Initialize()
+    public override void OnFrameworkInitializationCompleted()
+    {
+        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            AvaloniaXamlLoader.Load(this);
+            desktop.MainWindow = new MainWindow
+            {
+                DataContext = new MainViewModel()
+            };
+            App.MainWin = (MainWindow)desktop.MainWindow;
+        }
+        else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
+        {
+            singleViewPlatform.MainView = new MainView
+            {
+                DataContext = new MainViewModel()
+            };
         }
 
-        public override void OnFrameworkInitializationCompleted()
-        {
-            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-            {
-                desktop.MainWindow = new MainWindow
-                {
-                    DataContext = new MainViewModel()
-                };
-                App.MainWin = (MainWindow)desktop.MainWindow;
-            }
-            else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
-            {
-                singleViewPlatform.MainView = new MainView
-                {
-                    DataContext = new MainViewModel()
-                };
-            }
-
-            base.OnFrameworkInitializationCompleted();
-        }
+        base.OnFrameworkInitializationCompleted();
     }
 }

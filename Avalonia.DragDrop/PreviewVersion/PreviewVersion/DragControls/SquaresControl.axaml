@@ -1,0 +1,81 @@
+<UserControl
+	xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	d:DataContext="{x:Static controls:DesignData.DesignTimeMainViewModel}"
+    x:Class="PreviewVersion.DragControls.SquaresControl"
+	xmlns:controls="clr-namespace:PreviewVersion.Controls;assembly=PreviewVersion"
+	xmlns:dragControls="clr-namespace:PreviewVersion.DragControls;assembly=PreviewVersion">
+	<Grid
+		  x:Name="parentGrid"
+		  Background="Transparent"
+		  RowDefinitions="*,*,*">
+		<ScrollViewer
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Disabled" >
+			<dragControls:DropEnabledItemsControl
+				Background="Green"
+                Items="{Binding Boxes}">
+				<dragControls:DropEnabledItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<WrapPanel Background="Transparent" />
+					</ItemsPanelTemplate>
+				</dragControls:DropEnabledItemsControl.ItemsPanel>
+				<dragControls:DropEnabledItemsControl.ItemTemplate>
+					<DataTemplate>
+						<StackPanel>
+							<dragControls:BoxDragControl DataContext="{Binding}" Margin="6" />
+						</StackPanel>
+					</DataTemplate>
+				</dragControls:DropEnabledItemsControl.ItemTemplate>
+			</dragControls:DropEnabledItemsControl>
+		</ScrollViewer>
+
+		<ScrollViewer
+			Grid.Row="1"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Disabled" >
+			<dragControls:DropEnabledItemsControl
+				Background="Blue"
+                Items="{Binding Boxes2}">
+				<dragControls:DropEnabledItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<WrapPanel Background="Transparent" />
+					</ItemsPanelTemplate>
+				</dragControls:DropEnabledItemsControl.ItemsPanel>
+				<dragControls:DropEnabledItemsControl.ItemTemplate>
+					<DataTemplate>
+						<StackPanel>
+							<dragControls:BoxDragControl DataContext="{Binding}" Margin="6" />
+						</StackPanel>
+					</DataTemplate>
+				</dragControls:DropEnabledItemsControl.ItemTemplate>
+			</dragControls:DropEnabledItemsControl>
+		</ScrollViewer>
+
+		<ScrollViewer
+			Grid.Row="2"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Disabled" >
+			<dragControls:DropEnabledItemsControl 
+				Background="Red">
+				<dragControls:DropEnabledItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<WrapPanel  />
+					</ItemsPanelTemplate>
+				</dragControls:DropEnabledItemsControl.ItemsPanel>
+				<dragControls:DropEnabledItemsControl.ItemTemplate>
+					<DataTemplate>
+						<StackPanel>
+							<dragControls:CircleDragControl DataContext="{Binding}" Margin="6" />
+						</StackPanel>
+					</DataTemplate>
+				</dragControls:DropEnabledItemsControl.ItemTemplate>
+			</dragControls:DropEnabledItemsControl>
+		</ScrollViewer>
+
+	</Grid>
+
+</UserControl>
