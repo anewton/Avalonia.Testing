@@ -1,6 +1,6 @@
 namespace ReleaseVersion.DragControls;
 
-public partial class BoxDragControl : DragEnabledPanel
+public partial class BoxDragControl : DraggableControl
 {
     public BoxDragControl()
     {

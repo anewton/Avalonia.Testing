@@ -9,13 +9,23 @@
     d:DesignHeight="450"
     x:Class="ReleaseVersion.Views.MainView"
     Foreground="White"
-    Background="#171C2C"
+    Background="Black"
     xmlns:controls="clr-namespace:ReleaseVersion.Controls;assembly=ReleaseVersion"
 	xmlns:dragControls="clr-namespace:ReleaseVersion.DragControls;assembly=ReleaseVersion">
-	<Design.DataContext>
-		<viewModels:MainViewModel />
-	</Design.DataContext>
-
-	<dragControls:SquaresControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-
+    <Design.DataContext>
+        <viewModels:MainViewModel />
+    </Design.DataContext>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <TabControl>
+            <TabItem Header="Custom Drag/Drop">
+                <dragControls:SquaresControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </TabItem>
+            <TabItem Header="Pointer Contacts">
+                <controls:PointerContactsControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </TabItem>
+            <TabItem Header="Pointer Canvas">
+                <controls:PointersControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </TabItem>
+        </TabControl>
+    </Grid>
 </UserControl>

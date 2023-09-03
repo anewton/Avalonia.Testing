@@ -1,0 +1,31 @@
+<dragControls:DraggableControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" 
+    x:Class="ReleaseVersion.DragControls.TestBoxControl"
+    d:DataContext="{x:Static controls:DesignData.DesignTimeBox}"
+    xmlns:controls="clr-namespace:ReleaseVersion.Controls;assembly=ReleaseVersion"
+    xmlns:dragControls="clr-namespace:ReleaseVersion.DragControls;assembly=ReleaseVersion"
+    Width="120"
+    Height="120">
+    <Grid
+        Background="Black"
+		HorizontalAlignment="Stretch"
+		VerticalAlignment="Stretch"
+		Margin="0"
+		>
+        <Border
+            BorderBrush="White"
+            BorderThickness="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch" />
+        <TextBlock
+            Margin="6,4,0,0"
+            TextWrapping="Wrap"
+            Text="{Binding Name}"
+            Foreground="White" />
+        <Button Width="100" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </Grid>
+</dragControls:DraggableControl>

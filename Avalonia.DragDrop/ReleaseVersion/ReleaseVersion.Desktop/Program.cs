@@ -26,7 +26,7 @@ namespace ReleaseVersion.Desktop
             .With(new Avalonia.X11PlatformOptions
             {
                 OverlayPopups = true,
-                EnableMultiTouch = false
+                EnableMultiTouch = true
             })
             .LogToTrace();
 
