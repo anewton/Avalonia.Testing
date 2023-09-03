@@ -4,9 +4,9 @@ Sample applications to demonstrate custom Drag+Drop controls
 - DropEnabledItemsControl
 - DragEnabledPanel
 
-### PreviewVersion.csproj
-- Sample using Avalonia Version 11.0.0-preview2
-- BUG: Unable to use stylus as pointer for drag/drop on Surface Pro 8. Mousepad does allow drag/drop.
+### WorkingVersion.csproj
+- Sample using Avalonia Version 0.10.22
+- Working for mousepad, stylus, or touch as pointer for drag/drop on Surface Pro 8.
 
 ### ReleaseVersion.csproj
 - Sample using Avalonia Version 11.0.4
@@ -16,7 +16,7 @@ Sample applications to demonstrate custom Drag+Drop controls
 - Set either of the projects named "*.Desktop" as the startup project in Visual Studio. Then Debug.
 - Otherwise use the one of the following in Visual Studio Code from the root folder:
     ```
-    > dotnet run --project ./PreviewVersion/PreviewVersion.Desktop/PreviewVersion.Desktop.csproj
+    > dotnet run --project ./WorkingVersion/WorkingVersion.Desktop/WorkingVersion.Desktop.csproj
     ```
     OR
 
