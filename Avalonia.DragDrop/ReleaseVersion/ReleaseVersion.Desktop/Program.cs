@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Avalonia;
+using System;
 using System.Collections.Generic;
-using Avalonia;
 
 namespace ReleaseVersion.Desktop
 {
@@ -25,8 +25,16 @@ namespace ReleaseVersion.Desktop
             })
             .With(new Avalonia.X11PlatformOptions
             {
-                OverlayPopups = true,
-                EnableMultiTouch = true
+                OverlayPopups = true, 
+                EnableMultiTouch = false
+            })
+            .UseSkia()
+            .AfterSetup(builder =>
+            {
+                builder.Instance!.AttachDevTools(new Avalonia.Diagnostics.DevToolsOptions()
+                {
+                    StartupScreenIndex = 1
+                });
             })
             .LogToTrace();
 
