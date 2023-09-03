@@ -2,7 +2,7 @@ AvaloniaTest.DragDrop
 ---
 Sample applications to demonstrate custom Drag+Drop controls 
 - DropEnabledItemsControl
-- DragEnabledPanel
+- DraggableControl
 
 ### WorkingVersion.csproj
 - Sample using Avalonia Version 0.10.22
