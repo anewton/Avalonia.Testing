@@ -9,7 +9,7 @@ Sample applications to demonstrate custom Drag+Drop controls
 - BUG: Unable to use stylus as pointer for drag/drop on Surface Pro 8. Mousepad does allow drag/drop.
 
 ### ReleaseVersion.csproj
-- Sample using Avalonia Version 11.0.2
+- Sample using Avalonia Version 11.0.4
 - BUG: Unable to use touch or stylus as pointer for drag/drop in latest version on Surface Pro 8. Mousepad does allow drag/drop.
 
 ### Build/Run
