@@ -1,0 +1,32 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:WorkingVersion.ViewModels"
+    mc:Ignorable="d"
+    d:DesignWidth="800"
+    d:DesignHeight="450"
+    x:Class="WorkingVersion.Views.MainView"
+    Foreground="White"
+    Background="Black"
+    xmlns:controls="clr-namespace:WorkingVersion.Controls;assembly=WorkingVersion"
+	xmlns:dragControls="clr-namespace:WorkingVersion.DragControls;assembly=WorkingVersion">
+    <Design.DataContext>
+        <viewModels:MainViewModel />
+    </Design.DataContext>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        
+        <TabControl>
+            <TabItem Header="Custom Drag/Drop">
+                <dragControls:SquaresControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </TabItem>
+            <TabItem Header="Pointer Contacts">
+                <controls:PointerContactsControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </TabItem>
+            <TabItem Header="Pointer Canvas">
+                <controls:PointersControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

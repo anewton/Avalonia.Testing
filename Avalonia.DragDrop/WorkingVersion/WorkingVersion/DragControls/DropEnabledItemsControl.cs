@@ -1,15 +1,17 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
+using Avalonia.Styling;
 using System;
 using System.Collections;
 using System.Collections.ObjectModel;
 
-namespace ReleaseVersion.DragControls;
+namespace WorkingVersion.DragControls;
 
-public class DropEnabledItemsControl : ItemsControl
+public class DropEnabledItemsControl : ItemsControl, IStyleable
 {
-    protected override Type StyleKeyOverride => typeof(ItemsControl);
+    //protected override Type StyleKeyOverride => typeof(ItemsControl);
+    Type IStyleable.StyleKey => typeof(ItemsControl);
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
@@ -32,7 +34,7 @@ public class DropEnabledItemsControl : ItemsControl
             {
                 var index = 0;
                 var collectionSize = 0;
-                var enumerator = targetItemsControl.ItemsSource.GetEnumerator();
+                var enumerator = targetItemsControl.Items.GetEnumerator();
                 while (enumerator.MoveNext())
                 {
                     collectionSize++;
@@ -45,7 +47,7 @@ public class DropEnabledItemsControl : ItemsControl
                 if (index == -1)
                     index = 0;
 
-                IList dropCollection = targetItemsControl.ItemsSource as IList;
+                IList dropCollection = targetItemsControl.Items as IList;
                 var dataContext = dragSource.DataContext;
 
                 dropCollection.Remove((object)dragSource.DataContext);
@@ -72,21 +74,21 @@ public class DropEnabledItemsControl : ItemsControl
                     index = 0;
 
                 var dataContext = dragSource.DataContext;
-                IList sourceCollection = sourceItemsControl.ItemsSource as IList;
+                IList sourceCollection = sourceItemsControl.Items as IList;
                 sourceCollection.Remove((object)dragSource.DataContext);
 
-                if (targetItemsControl.ItemsSource == null)
+                if (targetItemsControl.Items == null)
                 {
 
                     dragSource.DataContext = dataContext;
-                    targetItemsControl.ItemsSource = new ObservableCollection<object>() { (object)dragSource.DataContext };
+                    targetItemsControl.Items = new ObservableCollection<object>() { (object)dragSource.DataContext };
                 }
                 else
                 {
-                    IList targetCollection = targetItemsControl.ItemsSource as IList;
+                    IList targetCollection = targetItemsControl.Items as IList;
                     dragSource.DataContext = dataContext;
                     targetCollection.Insert(index, (object)dragSource.DataContext);
-                    targetItemsControl.ItemsSource = targetCollection;
+                    targetItemsControl.Items = targetCollection;
                 }
 
                 e.Handled = true;

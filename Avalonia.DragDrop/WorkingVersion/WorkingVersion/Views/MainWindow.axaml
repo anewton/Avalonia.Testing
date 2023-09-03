@@ -1,20 +1,20 @@
 <Window
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:vm="using:ReleaseVersion.ViewModels"
+    xmlns:vm="using:WorkingVersion.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:views="clr-namespace:ReleaseVersion.Views"
+    xmlns:views="clr-namespace:WorkingVersion.Views"
     mc:Ignorable="d"
     d:DesignWidth="800"
     d:DesignHeight="450"
-    x:Class="ReleaseVersion.Views.MainWindow"
+    x:Class="WorkingVersion.Views.MainWindow"
     Icon="/Assets/avalonia-logo.ico"
-    Title="ReleaseVersion"
+    Title="WorkingVersion"
 	TransparencyLevelHint="AcrylicBlur"
     Background="Transparent"
     ExtendClientAreaToDecorationsHint="True"
-    xmlns:controls="clr-namespace:ReleaseVersion.Controls;assembly=ReleaseVersion">
+    xmlns:controls="clr-namespace:WorkingVersion.Controls;assembly=WorkingVersion">
 	<Panel x:Name="mainPanel">
 		<ExperimentalAcrylicBorder IsHitTestVisible="False">
 			<ExperimentalAcrylicBorder.Material>
@@ -27,7 +27,7 @@
 		</ExperimentalAcrylicBorder>
 		<Grid RowDefinitions="30, *">
 			<Border Height="30" Background="Transparent" IsHitTestVisible="False" VerticalAlignment="Top" />
-            <TextBlock Height="30" Background="Transparent" IsHitTestVisible="False" VerticalAlignment="Top" Margin="6" Text="Avalonia v11.0.4" />
+            <TextBlock Height="30" Background="Transparent" IsHitTestVisible="False" VerticalAlignment="Top" Margin="6" Text="Avalonia v0.10.22" />
 			<Panel x:Name="ROOTPANEL" Grid.RowSpan="2"
                 Margin="1,31,1,1"
                 Background="Blue"/>

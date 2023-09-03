@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace ReleaseVersion.DragControls;
+namespace WorkingVersion.DragControls;
 
 public class DraggableControl : Panel
 {
@@ -25,7 +25,6 @@ public class DraggableControl : Panel
 
     public DraggableControl()
     {
-
     }
 
     class PointerInfo
@@ -38,7 +37,7 @@ public class DraggableControl : Panel
     {
         public DragPopup()
         {
-            Placement = PlacementMode.Top;
+            PlacementMode = Avalonia.Controls.PlacementMode.Top;
             HorizontalOffset = VerticalOffset = 0;
             IsHitTestVisible = false;
             IsLightDismissEnabled = false;
@@ -135,7 +134,6 @@ public class DraggableControl : Panel
                 var mousePosition = pt.Point;
                 _dragPopup.HorizontalOffset = mousePosition.X - _dragItemClickPosition.X * _dragItemScaleFactor;
                 _dragPopup.VerticalOffset = _dragPopup.DragItemIndicator.Bounds.Height - _dragItemClickPosition.Y * _dragItemScaleFactor + mousePosition.Y;
-                _dragPopup.UpdateLayout();
             }
         }
 
