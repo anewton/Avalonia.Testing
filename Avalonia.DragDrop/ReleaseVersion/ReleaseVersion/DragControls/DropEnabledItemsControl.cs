@@ -72,8 +72,9 @@ public class DropEnabledItemsControl : ItemsControl
                     index = 0;
 
                 var dataContext = dragSource.DataContext;
-                IList sourceCollection = sourceItemsControl.ItemsSource as IList;
-                sourceCollection.Remove((object)dragSource.DataContext);
+                IList sourceCollection = sourceItemsControl?.ItemsSource as IList;
+                if(sourceCollection != null)
+                    sourceCollection.Remove((object)dragSource.DataContext);
 
                 if (targetItemsControl.ItemsSource == null)
                 {

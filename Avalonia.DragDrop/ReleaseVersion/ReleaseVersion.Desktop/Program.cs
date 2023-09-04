@@ -31,10 +31,12 @@ namespace ReleaseVersion.Desktop
             .UseSkia()
             .AfterSetup(builder =>
             {
+#if DEBUG
                 builder.Instance!.AttachDevTools(new Avalonia.Diagnostics.DevToolsOptions()
                 {
                     StartupScreenIndex = 1
                 });
+#endif
             })
             .LogToTrace();
 

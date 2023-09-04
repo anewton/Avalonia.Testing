@@ -26,6 +26,9 @@
             <TabItem Header="Pointer Canvas">
                 <controls:PointersControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             </TabItem>
+            <TabItem Header="Sample Drag and Drop">
+                <controls:SampleDragAndDropControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            </TabItem>
         </TabControl>
     </Grid>
 </UserControl>
