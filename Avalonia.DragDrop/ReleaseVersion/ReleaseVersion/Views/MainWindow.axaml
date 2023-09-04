@@ -6,15 +6,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="clr-namespace:ReleaseVersion.Views"
     mc:Ignorable="d"
-    d:DesignWidth="800"
-    d:DesignHeight="450"
+    d:DesignWidth="600"
+    d:DesignHeight="500"
     x:Class="ReleaseVersion.Views.MainWindow"
     Icon="/Assets/avalonia-logo.ico"
     Title="ReleaseVersion"
 	TransparencyLevelHint="AcrylicBlur"
     Background="Transparent"
     ExtendClientAreaToDecorationsHint="True"
-    xmlns:controls="clr-namespace:ReleaseVersion.Controls;assembly=ReleaseVersion">
+    xmlns:controls="clr-namespace:ReleaseVersion.Controls;assembly=ReleaseVersion"
+    d:DataContext="{x:Static controls:DesignData.DesignTimeMainViewModel}"
+    >
 	<Panel x:Name="mainPanel">
 		<ExperimentalAcrylicBorder IsHitTestVisible="False">
 			<ExperimentalAcrylicBorder.Material>
@@ -28,9 +30,11 @@
 		<Grid RowDefinitions="30, *">
 			<Border Height="30" Background="Transparent" IsHitTestVisible="False" VerticalAlignment="Top" />
             <TextBlock Height="30" Background="Transparent" IsHitTestVisible="False" VerticalAlignment="Top" Margin="6" Text="Avalonia v11.0.4" />
-			<Panel x:Name="ROOTPANEL" Grid.RowSpan="2"
-                Margin="1,31,1,1"
-                Background="Blue"/>
+            <controls:PointerInputOverlay Background="#FFFF0000" Grid.RowSpan="2"
+                    Margin="1,31,1,1">
+			    <Panel x:Name="ROOTPANEL" 
+                    Background="Blue"/>
+            </controls:PointerInputOverlay>
 		</Grid>
 	</Panel>
 </Window>

@@ -1,5 +1,4 @@
 ﻿using Avalonia.Controls;
-using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using System;
 using System.Collections;
@@ -11,15 +10,20 @@ public class DropEnabledItemsControl : ItemsControl
 {
     protected override Type StyleKeyOverride => typeof(ItemsControl);
 
-    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+    public DropEnabledItemsControl()
     {
-        base.OnApplyTemplate(e);
+        Loaded += DropEnabledItemsControl_Loaded;
+    }
+
+    private void DropEnabledItemsControl_Loaded(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
         DragDrop.SetAllowDrop(this, true);
         AddHandler(DragDrop.DropEvent, Drop);
     }
 
     private void Drop(object sender, DragEventArgs e)
     {
+        e.Handled = true;
         Control dragSource = e.Data.Get("Object") as Control;
         Control dropTarget = e.Source as Control;
 
@@ -51,8 +55,6 @@ public class DropEnabledItemsControl : ItemsControl
                 dropCollection.Remove((object)dragSource.DataContext);
                 dragSource.DataContext = dataContext;
                 dropCollection.Insert(index, (object)dragSource.DataContext);
-
-                e.Handled = true;
             }
             else if (sourceItemsControl != targetItemsControl)
             {
@@ -89,9 +91,8 @@ public class DropEnabledItemsControl : ItemsControl
                     targetCollection.Insert(index, (object)dragSource.DataContext);
                     targetItemsControl.ItemsSource = targetCollection;
                 }
-
-                e.Handled = true;
             }
+            UpdateLayout();
         }
     }
 

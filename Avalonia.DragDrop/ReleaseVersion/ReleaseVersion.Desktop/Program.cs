@@ -21,12 +21,13 @@ namespace ReleaseVersion.Desktop
             {
                 OverlayPopups = true,
                 WinUICompositionBackdropCornerRadius = 0,
-                CompositionMode = new List<Win32CompositionMode>() { Win32CompositionMode.WinUIComposition, Win32CompositionMode.RedirectionSurface }
+                RenderingMode = new List<Win32RenderingMode>() { Win32RenderingMode.AngleEgl },
+                CompositionMode = new List<Win32CompositionMode>() { Win32CompositionMode.WinUIComposition }
             })
             .With(new Avalonia.X11PlatformOptions
             {
-                OverlayPopups = true, 
-                EnableMultiTouch = false
+                OverlayPopups = true,
+                EnableMultiTouch = true
             })
             .UseSkia()
             .AfterSetup(builder =>

@@ -37,6 +37,8 @@ public partial class SampleDragAndDropControl : UserControl
 
     async void DoDrag(object sender, PointerPressedEventArgs e)
     {
+        if (_draggable.DataContext == null)
+            return;
         DataObject dragData = new();
         dragData.Set(DataFormats.Text, _draggable.DataContext.GetType().Name);
         dragData.Set("Object", _draggable);

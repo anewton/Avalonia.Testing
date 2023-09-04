@@ -15,20 +15,20 @@
     <Design.DataContext>
         <viewModels:MainViewModel />
     </Design.DataContext>
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <TabControl>
-            <TabItem Header="Custom Drag/Drop">
-                <dragControls:SquaresControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-            </TabItem>
-            <TabItem Header="Pointer Contacts">
-                <controls:PointerContactsControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-            </TabItem>
-            <TabItem Header="Pointer Canvas">
-                <controls:PointersControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-            </TabItem>
-            <TabItem Header="Sample Drag and Drop">
-                <controls:SampleDragAndDropControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-            </TabItem>
-        </TabControl>
-    </Grid>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabControl>
+                <TabItem Header="Custom Drag/Drop">
+                    <dragControls:SquaresControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                </TabItem>
+                <TabItem Header="Pointer Contacts">
+                    <controls:PointerContactsControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                </TabItem>
+                <TabItem Header="Pointer Canvas">
+                    <controls:PointersControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                </TabItem>
+                <!--<TabItem Header="Sample Drag and Drop">
+                    <controls:SampleDragAndDropControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                </TabItem>-->
+            </TabControl>
+        </Grid>
 </UserControl>
