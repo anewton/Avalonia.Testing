@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Media.Imaging;
+using ReleaseVersion.Controls;
 using System.Collections.Generic;
 using System.IO;
 
@@ -15,8 +16,92 @@ public class DraggableControl : Panel
     protected bool _isPointerTracked = false;
     protected PointerPressedEventArgs _pointerPressedEventArgs;
     protected double _dragItemScaleFactor = 0.8;
+    private Point _touchInputPosition;
+    private readonly DragGestureRecognizer _touchDragRecognizer;
 
-    public DraggableControl() { }
+    public DraggableControl()
+    {
+        _touchDragRecognizer = new DragGestureRecognizer();
+        _touchDragRecognizer.OnPointerMoved += OnTouchPointerMoved;
+        _touchDragRecognizer.OnPointerPressed += OnTouchPointerPressed;
+        _touchDragRecognizer.OnPointerReleased += OnTouchPointerReleased;
+        _touchDragRecognizer.OnPointerCaptureLost += OnTouchPointerCaptureLost;
+
+        GestureRecognizers.Add(_touchDragRecognizer);
+    }
+
+    protected void OnTouchPointerMoved(PointerEventArgs e)
+    {
+        if (!_isPointerTracked)
+            return;
+        UpdatePointer(e);
+        e.Handled = true;
+        foreach (var pt in _pointers.Values)
+        {
+            if (_dragPopup.IsOpen)
+            {
+                _touchInputPosition = pt.Point;
+                _dragPopup.HorizontalOffset = _touchInputPosition.X - _dragItemClickPosition.X * _dragItemScaleFactor;
+                _dragPopup.VerticalOffset = _dragPopup.DragItemIndicator.Bounds.Height - _dragItemClickPosition.Y * _dragItemScaleFactor + _touchInputPosition.Y;
+                _dragPopup.UpdateLayout();
+            }
+        }
+    }
+
+    protected void OnTouchPointerPressed(PointerPressedEventArgs e)
+    {
+        if (_isPointerTracked)
+            return;
+        UpdatePointer(e);
+        e.Handled = true;
+
+        _pointerPressedEventArgs = e;
+        _isPointerTracked = true;
+        _dragItemClickPosition = e.GetCurrentPoint(this).Position;
+
+        if (_dragPopup.DragItemIndicator == null)
+        {
+            var imageControl = RenderToBitmap(this, _dragItemScaleFactor);
+            _dragPopup.DragItemIndicator = imageControl;
+        }
+        if (!_dragPopup.IsOpen)
+        {
+            var mousePosition = _pointerPressedEventArgs.GetPosition(this);
+            _dragPopup.HorizontalOffset = mousePosition.X - _dragItemClickPosition.X * _dragItemScaleFactor;
+            _dragPopup.VerticalOffset = (Bounds.Height * _dragItemScaleFactor) - _dragItemClickPosition.Y * _dragItemScaleFactor + mousePosition.Y;
+            _dragPopup.Open();
+        }
+    }
+
+    protected void OnTouchPointerReleased(PointerReleasedEventArgs e)
+    {
+        if (DataContext == null)
+            return;
+
+        if (!_isPointerTracked)
+            return;
+        _pointers.Remove(e.Pointer);
+
+        DataObject data = new();
+        data.Set(DataFormats.Text, DataContext.GetType().Name);
+        data.Set("Object", this);
+
+        ResetDragDropIndicator();
+        DragDrop.DoDragDrop(e, data, DragDropEffects.Move); // TODO: Fix for PointerType == Pen
+
+        InvalidateVisual();
+    }
+
+    protected void OnTouchPointerCaptureLost(PointerCaptureLostEventArgs e)
+    {
+        if (!_isPointerTracked)
+            return;
+        _pointers.Remove(e.Pointer);
+        e.Handled = true;
+
+        ResetDragDropIndicator();
+        InvalidateVisual();
+    }
 
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
@@ -67,7 +152,7 @@ public class DraggableControl : Panel
         if (_isPointerTracked)
             return;
         UpdatePointer(e);
-        //e.Pointer.Capture(this);
+        e.Pointer.Capture(this);
         e.Handled = true;
 
         _pointerPressedEventArgs = e;
@@ -104,7 +189,7 @@ public class DraggableControl : Panel
         e.Handled = true;
 
         DataObject data = new();
-        data.Set(DataFormats.Text, this.DataContext.GetType().Name);
+        data.Set(DataFormats.Text, DataContext.GetType().Name);
         data.Set("Object", this);
 
         DragDrop.DoDragDrop(_pointerPressedEventArgs, data, DragDropEffects.Move);

@@ -23,7 +23,7 @@ public class DropEnabledItemsControl : ItemsControl
 
     private void Drop(object sender, DragEventArgs e)
     {
-        e.Handled = true;
+        
         Control dragSource = e.Data.Get("Object") as Control;
         Control dropTarget = e.Source as Control;
 
@@ -55,6 +55,7 @@ public class DropEnabledItemsControl : ItemsControl
                 dropCollection.Remove((object)dragSource.DataContext);
                 dragSource.DataContext = dataContext;
                 dropCollection.Insert(index, (object)dragSource.DataContext);
+                e.Handled = true;
             }
             else if (sourceItemsControl != targetItemsControl)
             {
@@ -91,6 +92,7 @@ public class DropEnabledItemsControl : ItemsControl
                     targetCollection.Insert(index, (object)dragSource.DataContext);
                     targetItemsControl.ItemsSource = targetCollection;
                 }
+                e.Handled = true;
             }
             UpdateLayout();
         }

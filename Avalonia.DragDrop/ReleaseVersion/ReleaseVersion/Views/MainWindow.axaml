@@ -30,11 +30,16 @@
 		<Grid RowDefinitions="30, *">
 			<Border Height="30" Background="Transparent" IsHitTestVisible="False" VerticalAlignment="Top" />
             <TextBlock Height="30" Background="Transparent" IsHitTestVisible="False" VerticalAlignment="Top" Margin="6" Text="Avalonia v11.0.4" />
-            <controls:PointerInputOverlay Background="#FFFF0000" Grid.RowSpan="2"
+            <!--<controls:PointerInputOverlay Background="#FFFF0000" Grid.RowSpan="2"
                     Margin="1,31,1,1">
-			    <Panel x:Name="ROOTPANEL" 
-                    Background="Blue"/>
-            </controls:PointerInputOverlay>
+			    <Panel x:Name="ROOTPANEL"
+                       Background="Blue" />
+            </controls:PointerInputOverlay>-->
+            
+                <Panel x:Name="ROOTPANEL"
+                       Grid.RowSpan="2"
+                       Margin="1,31,1,1"
+                       Background="Blue" />
 		</Grid>
 	</Panel>
 </Window>
