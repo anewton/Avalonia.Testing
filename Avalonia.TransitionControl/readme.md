@@ -10,3 +10,5 @@ Sample application to demonstrate a custom transition control
     ```
     > dotnet run --project ./Avalonia.TransitionControl.Desktop/Avalonia.TransitionControl.Desktop.csproj
     ```
+
+![Alt Text](./CustomTransitionBug.gif)
