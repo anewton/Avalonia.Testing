@@ -1,0 +1,39 @@
+<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Avalonia.TransitionControl.Controls"
+    xmlns:transitions="using:Avalonia.TransitionControl.Transitions">
+    <Design.PreviewWith>
+        <controls:ObjectPageControl
+            SelectedObject="Green"
+            Height="200"
+            Width="300">
+            <controls:ObjectPageControl.PageTransition>
+                <transitions:PageSlide
+                    Duration="0:00:02.000"
+                    Orientation="Horizontal"
+                    Forward="True" />
+            </controls:ObjectPageControl.PageTransition>
+            <controls:ObjectPageControl.ChildControls>
+                <Rectangle Fill="Red" DataContext="Red" />
+                <Rectangle Fill="Green" DataContext="Green"  />
+                <Rectangle Fill="Blue" DataContext="Blue" />
+                <Rectangle Fill="Purple" DataContext="Purple" />
+                <Rectangle Fill="Orange" DataContext="Orange" />
+            </controls:ObjectPageControl.ChildControls>
+        </controls:ObjectPageControl>
+        
+    </Design.PreviewWith>
+
+    <Style Selector="controls|ObjectPageControl">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid
+                    Name="PART_ItemsContainer"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>
