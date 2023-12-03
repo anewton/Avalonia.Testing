@@ -1,8 +1,6 @@
-using Avalonia.Controls;
-
 namespace Avalonia.TransitionControl.Controls;
 
-public partial class UserControl2 : UserControl
+public partial class UserControl2 : AnimatableUserControl
 {
     public UserControl2()
     {

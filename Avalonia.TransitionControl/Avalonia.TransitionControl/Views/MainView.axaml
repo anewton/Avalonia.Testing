@@ -15,53 +15,13 @@
     <TabControl>
         <TabItem>
             <TabItem.Header>
-                Color Rectangle Transitions
+                Page Slide Transition
             </TabItem.Header>
             <TabItem.Content>
                 <Grid
                     RowDefinitions="*, Auto"
                     ColumnDefinitions="Auto, *">
                     <controls:ObjectPageControl
-                        x:Name="Test1"
-                        Grid.ColumnSpan="6"
-                        Grid.RowSpan="2"
-                        SelectedObject="{Binding SelectedValue}">
-                        <controls:ObjectPageControl.PageTransition>
-                            <transitions:PageSlide
-                                Duration="0:00:00.500"
-                                Orientation="Horizontal"
-                                Forward="True" />
-                        </controls:ObjectPageControl.PageTransition>
-                        <controls:ObjectPageControl.ChildControls>
-                            <Rectangle Fill="Red" DataContext="Red" />
-                            <Rectangle Fill="Green" DataContext="Green"  />
-                            <Rectangle Fill="Blue" DataContext="Blue" />
-                            <Rectangle Fill="Purple" DataContext="Purple" />
-                            <Rectangle Fill="Orange" DataContext="Orange" />
-                        </controls:ObjectPageControl.ChildControls>
-                    </controls:ObjectPageControl>
-                    <StackPanel
-                        Grid.Row="1"
-                        Orientation="Horizontal">
-                        <Button Command="{Binding SetSelectedValue}" CommandParameter="Red">Red</Button>
-                        <Button Command="{Binding SetSelectedValue}" CommandParameter="Green">Green</Button>
-                        <Button Command="{Binding SetSelectedValue}" CommandParameter="Blue">Blue</Button>
-                        <Button Command="{Binding SetSelectedValue}" CommandParameter="Purple">Purple</Button>
-                        <Button Command="{Binding SetSelectedValue}" CommandParameter="Orange">Orange</Button>
-                    </StackPanel>
-                </Grid>
-            </TabItem.Content>
-        </TabItem>
-        <TabItem>
-            <TabItem.Header>
-                Custom Control Transitions
-            </TabItem.Header>
-            <TabItem.Content>
-                <Grid
-                    RowDefinitions="*, Auto"
-                    ColumnDefinitions="Auto, *">
-                    <controls:ObjectPageControl
-                        x:Name="Test2"
                         Grid.ColumnSpan="6"
                         Grid.RowSpan="2"
                         SelectedObject="{Binding SelectedValue}">
@@ -83,6 +43,38 @@
                         <Button Command="{Binding SetSelectedValue}" CommandParameter="Blue">Blue</Button>
                     </StackPanel>
 
+                </Grid>
+            </TabItem.Content>
+        </TabItem>
+        <TabItem>
+            <TabItem.Header>
+                Bounds X Transition
+            </TabItem.Header>
+            <TabItem.Content>
+                <Grid
+                    RowDefinitions="*, Auto"
+                    ColumnDefinitions="Auto, *">
+                    <controls:ObjectPageControl
+                        Grid.ColumnSpan="6"
+                        Grid.RowSpan="2"
+                        SelectedObject="{Binding SelectedValue}">
+                        <controls:ObjectPageControl.PageTransition>
+                            <transitions:BoundsXTransition
+                                Duration="0:00:00.500"
+                                Orientation="Horizontal"
+                                Forward="True" />
+                        </controls:ObjectPageControl.PageTransition>
+                        <controls:ObjectPageControl.ChildControls>
+                            <controls:UserControl1 DataContext="Blue" />
+                            <controls:UserControl2 DataContext="Red" />
+                        </controls:ObjectPageControl.ChildControls>
+                    </controls:ObjectPageControl>
+                    <StackPanel
+                        Grid.Row="1"
+                        Orientation="Horizontal">
+                        <Button Command="{Binding SetSelectedValue}" CommandParameter="Red">Red</Button>
+                        <Button Command="{Binding SetSelectedValue}" CommandParameter="Blue">Blue</Button>
+                    </StackPanel>
                 </Grid>
             </TabItem.Content>
         </TabItem>
